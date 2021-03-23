@@ -1,0 +1,31 @@
+{
+    "name": "zareismail/project-manager",
+    "description": "A Laravel Nova tool.",
+    "keywords": [
+        "laravel",
+        "nova"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": ">=7.1.0",
+        "zareismail/keil": "~0.1",
+        "zareismail/task": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Zareismail\\ProjectManager\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Zareismail\\ProjectManager\\ServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

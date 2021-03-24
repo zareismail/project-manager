@@ -3,7 +3,7 @@
 namespace Zareismail\ProjectManager\Nova;
 
 use Illuminate\Http\Request;  
-use Laravel\Nova\Fields\{ID, Text, Number, Currency, BelongsTo, HasOne};
+use Laravel\Nova\Fields\{ID, Text, Number, Currency, BelongsTo, HasMany};
 use Laravel\Nova\Http\Requests\{NovaRequest, ActionRequest};
 use Zareismail\NovaContracts\Nova\User;
 
@@ -81,7 +81,7 @@ class Project extends Resource
             static::dateField(__('Finish Date'), 'finish_date')
                 ->hideFromIndex(),
 
-            HasOne::make(__('Inventory'), 'inventory', Inventory::class),
+            HasMany::make(__('Inventory'), 'inventory', Inventory::class),
         ];
     }
 

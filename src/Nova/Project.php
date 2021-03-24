@@ -86,6 +86,20 @@ class Project extends Resource
     }
 
     /**
+     * Get the filters available for the resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    public function filters(Request $request)
+    {
+        return [
+            Filters\Manager::make(),
+            Filters\Employer::make(),
+        ];
+    }
+
+    /**
      * Get the actions available for the resource.
      *
      * @param  \Illuminate\Http\Request  $request

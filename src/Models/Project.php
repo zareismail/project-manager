@@ -43,7 +43,7 @@ class Project extends AuthorizableModel
 	 */
 	public function employer()
 	{
-		return $this->authenticatable('employer_id');
+		return $this->belongsTo(Employer::class);
 	}
 
 	/**
@@ -53,6 +53,6 @@ class Project extends AuthorizableModel
 	 */
 	public function inventory()
 	{
-		return $this->hasOne(Inventory::class, 'project_id');
+		return $this->hasMany(Inventory::class, 'project_id');
 	}
 }

@@ -109,14 +109,7 @@ class Project extends Resource
     {
         return [
             Actions\CreateInventoryList::make()
-                ->onlyOnTableRow()
-                ->canSee(function($request) {
-                    if ($request instanceof ActionRequest) {
-                        return true;  
-                    }
-
-                    return is_null(optional($this->resource)->inventory);
-                }),
+                ->onlyOnTableRow(),
         ];
     }
 }

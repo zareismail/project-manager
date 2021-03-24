@@ -69,8 +69,7 @@ class InventoryMaterial extends Resource
                 ->required()
                 ->rules('required'),
 
-            Currency::make(__('Unit Price'), 'price')
-                ->currency('IRR')
+            Currency::make(__('Unit Price'), 'price') 
                 ->nullable(),
         ];
     }

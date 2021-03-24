@@ -17,6 +17,7 @@ class ServiceProvider extends LaravelServiceProvider implements DeferrableProvid
      */
     public function register()
     {
+        $this->app['config']->set('nova.currency', 'IRR');
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations'); 
         
         Gate::policy(Models\Leave::class, Policies\Leave::class);

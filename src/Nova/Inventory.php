@@ -23,7 +23,7 @@ class Inventory extends Resource
      *
      * @var array
      */
-    public static $with = ['project'];
+    public static $with = ['project', 'materials'];
 
     /**
      * Get the fields displayed by the resource.
@@ -50,6 +50,12 @@ class Inventory extends Resource
                 ->searchable()
                 ->required()
                 ->rules('required'),
+
+            Currency::make(__('Total Expenditure'), function() {
+                return $this->materials->sum(function($material) {
+                    return $material->pivot->price * $material->pivot->value;
+                }); 
+            }),
 
             HasMany::make(__('Materials'), 'items', InventoryMaterial::class),
 

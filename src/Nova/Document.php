@@ -51,13 +51,14 @@ class Document extends Resource
         return [
             ID::make(__('ID'), 'id')->sortable(),
 
-            Text::make(__('Document Number'), 'uniqueness_id')
-                ->exceptOnForms(),
-
             Text::make(__('Document Name'), 'name')
                 ->sortable()
                 ->required()
                 ->rules('required'),
+
+            Text::make(__('Document Number'), 'uniqueness_id')
+                ->rules('unique:pm_documents,uniqueness_id,{{resourceId}}')
+                ->help(__('Leave empty to system generate a unique number.')),
 
             Trix::make(__('Note'), 'note')
                 ->nullable(),

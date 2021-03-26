@@ -38,14 +38,14 @@ class InventoryMaterial extends Resource
                 ->hideWhenUpdating()
                 ->showCreateRelationButton()
                 ->withoutTrashed()
-                ->searchable()
+                // ->searchable()
                 ->required()
                 ->rules('required'),
 
             BelongsTo::make(__('Material'), 'material', Material::class) 
                 ->showCreateRelationButton()
                 ->withoutTrashed()
-                ->searchable()
+                // ->searchable()
                 ->required()
                 ->rules('required')
                 ->creationRules([function($attribute, $value, $fail) { 

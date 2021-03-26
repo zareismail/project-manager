@@ -48,14 +48,14 @@ class Project extends Resource
             BelongsTo::make(__('Manager'), 'manager', User::class) 
                 ->showCreateRelationButton()
                 ->withoutTrashed()
-                ->searchable()
+                // ->searchable()
                 ->required()
                 ->rules('required'),
 
             BelongsTo::make(__('Employer'), 'employer', Employer::class) 
                 ->showCreateRelationButton()
                 ->withoutTrashed()
-                ->searchable()
+                // ->searchable()
                 ->required()
                 ->rules('required'), 
 

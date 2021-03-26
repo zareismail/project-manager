@@ -39,7 +39,7 @@ class Inventory extends Resource
             BelongsTo::make(__('User'), 'auth', User::class) 
                 ->showCreateRelationButton()
                 ->withoutTrashed()
-                ->searchable()
+                // ->searchable()
                 ->required()
                 ->rules('required')
                 ->exceptOnForms(),
@@ -47,7 +47,7 @@ class Inventory extends Resource
             BelongsTo::make(__('Project'), 'project', Project::class) 
                 ->showCreateRelationButton()
                 ->withoutTrashed()
-                ->searchable()
+                // ->searchable()
                 ->required()
                 ->rules('required'),
 

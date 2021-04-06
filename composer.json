@@ -10,7 +10,8 @@
         "php": ">=7.1.0",
         "zareismail/keil": "~0.1",
         "zareismail/task-management": "*",
-        "armincms/nova-translation": "~1.1"
+        "armincms/nova-translation": "~1.1",
+        "zareismail/voice-recorder": "*"
     },
     "autoload": {
         "psr-4": {

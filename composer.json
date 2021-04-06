@@ -9,7 +9,8 @@
     "require": {
         "php": ">=7.1.0",
         "zareismail/keil": "~0.1",
-        "zareismail/task-management": "*"
+        "zareismail/task-management": "*",
+        "armincms/nova-translation": "~1.1"
     },
     "autoload": {
         "psr-4": {

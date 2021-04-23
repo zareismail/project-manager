@@ -83,7 +83,7 @@ class Inventory extends Resource
      */
     public function title()
     {
-        return $this->project->name;
+        return $this->project->number;
     }
 
     /**

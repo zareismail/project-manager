@@ -20,6 +20,7 @@ class CreateInventoryMaterialTable extends Migration
             $table->foreignId('material_id')->constrained(Helper::prefixTable('materials'));  
             $table->foreignId('unit_id')->constrained('keil_units');  
             $table->integer('value')->default(1);
+            $table->integer('stock')->default(0);
             $table->longPrice()->nullable();
         });
     }

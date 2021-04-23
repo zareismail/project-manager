@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\{ID, Number, Currency, BelongsTo};
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Zareismail\Keil\Nova\MeasuringUnit;
+use Maatwebsite\LaravelNovaExcel\Actions\DownloadExcel;
 
 class InventoryMaterial extends Resource
 { 
@@ -67,7 +68,15 @@ class InventoryMaterial extends Resource
 
             Number::make(__('Required Value'), 'value')
                 ->required()
-                ->rules('required'),
+                ->rules('required')
+                ->default(1)
+                ->min(1),
+
+            Number::make(__('Stock Value'), 'stock')
+                ->required()
+                ->rules('required')
+                ->default(0)
+                ->min(0),
 
             Currency::make(__('Unit Price'), 'price') 
                 ->nullable(),
@@ -93,5 +102,18 @@ class InventoryMaterial extends Resource
     public static function availableForNavigation(Request $request)
     {
         return false;
+    }
+
+    /**
+     * Get the actions available for the resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    public function actions(Request $request)
+    {
+        return [
+            DownloadExcel::make(),
+        ];
     }
 }

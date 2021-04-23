@@ -56,4 +56,14 @@ class Project extends AuthorizableModel
 	{
 		return $this->hasMany(Inventory::class, 'project_id');
 	}
+
+	/**
+	 * Query the related Document.
+	 * 
+	 * @return \Illuminate\Database\Eloquent\Relations\HasOneOrMany
+	 */
+	public function documents()
+	{
+		return $this->hasMany(Document::class, 'project_id');
+	}
 }

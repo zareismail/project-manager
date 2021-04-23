@@ -4,7 +4,7 @@ namespace Zareismail\ProjectManager\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Http\Requests\{NovaRequest, ActionRequest};
-use Laravel\Nova\Fields\{ID, Text, Trix, MorphMany};
+use Laravel\Nova\Fields\{ID, Text, Trix, BelongsTo, MorphMany};
 use DmitryBubyakin\NovaMedialibraryField\Fields\Medialibrary;
 use Zareismail\Task\Nova\{Task, Actions\CreateTask};
 
@@ -50,6 +50,11 @@ class Document extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
+
+            BelongsTo::make(__('Related Project'), 'project', Project::class)
+                ->showCreateRelationButton()
+                ->withoutTrashed()
+                ->nullable(),
 
             Text::make(__('Document Name'), 'name')
                 ->sortable()

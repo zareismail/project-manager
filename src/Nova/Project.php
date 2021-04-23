@@ -89,6 +89,8 @@ class Project extends Resource
                 ->hideFromIndex(),
 
             HasMany::make(__('Inventory'), 'inventory', Inventory::class),
+
+            HasMany::make(__('Related Documents'), 'documents', Document::class),
         ];
     }
 

@@ -20,6 +20,7 @@ class CreateDocumentsTable extends Migration
             $table->naming(); 
             $table->auth(); 
             $table->text('note')->nullable();
+            $table->foreignId('project_id')->nullable()->constrained(Helper::prefixTable('projects')); 
             $table->timestamps();
             $table->softDeletes();
         });

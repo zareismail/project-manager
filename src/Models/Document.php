@@ -13,6 +13,11 @@ class Document extends AuthorizableModel implements Taskable, HasMedia
 {
     use InteractsWithTasks, HasMediaTrait, Uniqueness;
 
+    public function project()
+    {
+    	return $this->belongsTo(Project::class);
+    }
+
     public function registerMediaCollections()
     {
     	$this->addMediaCollection('attachments');

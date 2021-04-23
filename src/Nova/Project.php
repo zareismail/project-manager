@@ -71,11 +71,18 @@ class Project extends Resource
                 ->required()
                 ->rules('required'),
 
+            Currency::make(__('Project Amount'), 'amount')
+                ->nullable()
+                ->currency('IRR'),
+
             Currency::make(__('Warning Point'), 'warning')
                 ->nullable()
                 ->currency('IRR'),
 
             static::dateField(__('Started Date'), 'start_date')
+                ->hideFromIndex(),
+
+            static::dateField(__('Renewal Date'), 'renewal_date')
                 ->hideFromIndex(),
 
             static::dateField(__('Finish Date'), 'finish_date')

@@ -14,6 +14,7 @@ class Project extends AuthorizableModel
     protected $casts = [
     	'start_date' => 'date',
     	'finish_date' => 'date',
+    	'renewal_date' => 'date',
     ];
 
 	/**

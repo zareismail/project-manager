@@ -5,8 +5,7 @@ namespace Zareismail\ProjectManager\Nova;
 use Illuminate\Http\Request;  
 use Laravel\Nova\Fields\{ID, Number, Currency, BelongsTo};
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Zareismail\Keil\Nova\MeasuringUnit;
-use Maatwebsite\LaravelNovaExcel\Actions\DownloadExcel;
+use Zareismail\Keil\Nova\MeasuringUnit; 
 
 class InventoryMaterial extends Resource
 { 
@@ -112,8 +111,12 @@ class InventoryMaterial extends Resource
      */
     public function actions(Request $request)
     {
-        return [
-            DownloadExcel::make(),
+        return [ 
+            Actions\ExportToExcel::make()
+                ->standalone() 
+                ->withHeadings() 
+                ->withDisk('public')
+                ->withWriterType(\Maatwebsite\Excel\Excel::CSV),
         ];
     }
 }

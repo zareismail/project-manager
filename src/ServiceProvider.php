@@ -19,24 +19,8 @@ class ServiceProvider extends LaravelServiceProvider implements DeferrableProvid
     {
         $this->app['config']->set('nova.currency', 'IRR');
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');  
-        
-        Gate::policy(Models\Leave::class, Policies\Leave::class);
-        Gate::policy(Models\Project::class, Policies\Project::class);
-        Gate::policy(Models\Document::class, Policies\Document::class);
-        Gate::policy(Models\Employer::class, Policies\Employer::class);
-        Gate::policy(Models\Material::class, Policies\Material::class);
-        Gate::policy(Models\Inventory::class, Policies\Inventory::class);
-
-        LaravelNova::resources([ 
-            Nova\Material::class,
-            Nova\Employer::class,
-            Nova\Document::class,
-            Nova\Leave::class,
-            Nova\Project::class,
-            Nova\Inventory::class,
-            Nova\InventoryMaterial::class,
-            Nova\Translation::class,
-        ]);
+        $this->registerNovaResources();
+        $this->registerPolicy();
 
         Task::saved(function($model) { 
             if ($model->taskable_type !== Models\Leave::class) {
@@ -51,6 +35,36 @@ class ServiceProvider extends LaravelServiceProvider implements DeferrableProvid
                 $model->isCompleted() ? $leave->accept() : $leave->reject();
             } 
         });
+    }
+
+    public function registerNovaResources()
+    { 
+        LaravelNova::resources([ 
+            Nova\Material::class,
+            Nova\Employer::class,
+            Nova\Document::class,
+            Nova\Leave::class,
+            Nova\Project::class,
+            Nova\Inventory::class,
+            Nova\InventoryMaterial::class,
+            Nova\Translation::class,
+        ]); 
+
+        LaravelNova::cards([
+            \Zareismail\Cards\EventHistory::make()
+                ->only(\Zareismail\Task\Nova\Task::class)
+                ->actionResource(Nova\Activity::class),  
+        ]); 
+    }
+
+    public function registerPolicy()
+    { 
+        Gate::policy(Models\Leave::class, Policies\Leave::class);
+        Gate::policy(Models\Project::class, Policies\Project::class);
+        Gate::policy(Models\Document::class, Policies\Document::class);
+        Gate::policy(Models\Employer::class, Policies\Employer::class);
+        Gate::policy(Models\Material::class, Policies\Material::class);
+        Gate::policy(Models\Inventory::class, Policies\Inventory::class);
     }
 
     /**

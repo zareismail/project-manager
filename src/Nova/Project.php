@@ -69,7 +69,8 @@ class Project extends Resource
 
             Number::make(__('Coefficient'), 'coefficient')
                 ->required()
-                ->rules('required'),
+                ->rules('required')
+                ->hideFromIndex(),
 
             Currency::make(__('Project Amount'), 'amount')
                 ->nullable()
@@ -77,7 +78,8 @@ class Project extends Resource
 
             Currency::make(__('Warning Point'), 'warning')
                 ->nullable()
-                ->currency('IRR'),
+                ->currency('IRR')
+                ->hideFromIndex(),
 
             static::dateField(__('Started Date'), 'start_date')
                 ->hideFromIndex(),

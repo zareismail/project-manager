@@ -11,7 +11,12 @@
         "zareismail/keil": "~0.1",
         "zareismail/task-management": "*",
         "armincms/nova-translation": "~1.1",
-        "zareismail/voice-recorder": "*"
+        "pishran/nova-rtl-theme": "^1.5",
+        "maatwebsite/laravel-nova-excel": "~1.2",
+        "zareismail/event-history": "*",
+        "zareismail/board": "*",
+        "zareismail/voice-recorder": "*",
+        "zareismail/nova-resource-manager": "~0.2"
     },
     "autoload": {
         "psr-4": {

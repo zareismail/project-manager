@@ -53,7 +53,7 @@ class ServiceProvider extends LaravelServiceProvider implements DeferrableProvid
         LaravelNova::cards([
             \Zareismail\Cards\EventHistory::make()
                 ->only(\Zareismail\Task\Nova\Task::class)
-                ->actionResource(Nova\Activity::class),  
+                ->actionResource(\Zareismail\Task\Nova\Activity::class),  
         ]); 
     }
 
